@@ -1,0 +1,28 @@
+{
+	"name": "tutor_nodejs_academind",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js",
+		"start-server": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@gitlab.com/supervueman/tutor_nodejs_academind.git"
+	},
+	"author": "Rinat",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://gitlab.com/supervueman/tutor_nodejs_academind/issues"
+	},
+	"homepage": "https://gitlab.com/supervueman/tutor_nodejs_academind#readme",
+	"devDependencies": {
+		"nodemon": "^1.18.9"
+	},
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.4"
+	}
+}
