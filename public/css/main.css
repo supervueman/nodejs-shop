@@ -29,3 +29,7 @@ a {
 	flex-wrap: wrap;
 	width: 100%;
 }
+
+a.active {
+	color: red;
+}
