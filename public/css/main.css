@@ -1,8 +1,31 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
-	background-color: #000;
-	color: #fff;
+	background-color: #fff;
+	color: #000;
 }
 
 a {
-	color: #fff;
+	color: #000;
+}
+
+.product-item {
+	width: 33%;
+	background-color: #fff;
+	color: #000;
+	padding: 20px;
+	border: 1px solid #000
+}
+
+.product-title {
+	text-align: center;
+	margin: 0 0 20px 0;
+}
+
+.products-sect {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
 }
