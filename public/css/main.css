@@ -5,6 +5,7 @@
 body {
 	background-color: #fff;
 	color: #000;
+	margin: 0;
 }
 
 a {
@@ -24,10 +25,11 @@ a {
 	margin: 0 0 20px 0;
 }
 
-.products-sect {
+.product-sect {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
+	justify-content: space-between;
 }
 
 a.active {
