@@ -5,8 +5,11 @@ const bosyParser = require('body-parser');
 const errorController = require('./controllers/error');
 
 const sequelize = require('./util/database');
+
 const Product = require('./models/product');
 const User = require('./models/user');
+const Cart = require('./models/Cart');
+const CartItem = require('./models/cart-item');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -42,14 +45,22 @@ Product.belongsTo(User, {
 	constrains: true,
 	onDelete: 'CASCADE'
 });
-
 User.hasMany(Product);
+User.hasOne(Cart);
+Cart.belongsTo(User);
+Cart.belongsToMany(Product, {
+	through: CartItem
+});
+Product.belongsToMany(Cart, {
+	through: CartItem
+});
+
 
 sequelize
-	// .sync({
-	// 	force: true
-	// })
-	.sync()
+	.sync({
+		force: true
+	})
+	// .sync()
 	.then(result => {
 		return User.findByPk(1);
 	})
