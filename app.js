@@ -8,7 +8,7 @@ const sequelize = require('./util/database');
 
 const Product = require('./models/product');
 const User = require('./models/user');
-const Cart = require('./models/Cart');
+const Cart = require('./models/cart');
 const CartItem = require('./models/cart-item');
 
 const adminRoutes = require('./routes/admin');
@@ -57,10 +57,10 @@ Product.belongsToMany(Cart, {
 
 
 sequelize
-	.sync({
-		force: true
-	})
-	// .sync()
+	// .sync({
+	// 	force: true
+	// })
+	.sync()
 	.then(result => {
 		return User.findByPk(1);
 	})
@@ -71,10 +71,13 @@ sequelize
 				email: 'supervueman@gmail.com'
 			});
 		}
-		return Promise.resolve(user);
+		return user;
 	})
 	.then(user => {
 		// console.log(user);
+		return user.createCart();
+	})
+	.then(cart => {
 		app.listen(3000, () => {
 			console.log('App started on 3000 port');
 		});
