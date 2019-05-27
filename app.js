@@ -5,6 +5,8 @@ const bosyParser = require('body-parser');
 const errorController = require('./controllers/error');
 
 const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -26,7 +28,16 @@ app.use('/', shopRoutes);
 
 app.use(errorController.get404);
 
-sequelize.sync().then(result => {
+Product.belongsTo(User, {
+	constrains: true,
+	onDelete: 'CASCADE'
+});
+
+User.hasMany(Product);
+
+sequelize.sync({
+	force: true
+}).then(result => {
 	console.log(result);
 	app.listen(3000, () => {
 		console.log('App started on 3000 port');
