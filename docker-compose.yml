@@ -1,23 +1,12 @@
-version: '2'
+version: '3'
+
 services:
   db:
-    image: mysql:5.6
-    restart: unless-stopped
+    image: mongo
+    ports:
+      - 27020:27017
     volumes:
-      - data:/var/lib/mysql
+      - ./db:/data/db
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: node-complete
-    ports:
-      - 33060:3306
-    command: mysqld --sql-mode=NO_ENGINE_SUBSTITUTION --character-set-server=utf8 --collation-server=utf8_general_ci
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
-
-volumes:
-  data:
-    driver: local
+      MONGO_LOG_DIR: /dev/null
+      MONGO_INITDB_DATABASE: api_db
