@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express');
 const bosyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const errorController = require('./controllers/error');
-const mongoConnect = require('./util/database').mongoConnect;
 const User = require('./models/user')
 
 const adminRoutes = require('./routes/admin');
@@ -37,7 +37,13 @@ app.use('/', shopRoutes);
 app.use(errorController.get404);
 
 
-mongoConnect(() => {
+mongoose.connect(`mongodb://${'localhost:27017'}/template`, {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(result => {
 	app.listen(3000);
 	console.log('Server start on 3000 port');
-})
+
+}).catch(err => {
+	console.log(err);
+});
