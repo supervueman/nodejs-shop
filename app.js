@@ -3,7 +3,7 @@ const express = require('express');
 const bosyParser = require('body-parser');
 
 const errorController = require('./controllers/error');
-const mongoConnect = require('./util/database');
+const mongoConnect = require('./util/database').mongoConnect;
 
 const adminRoutes = require('./routes/admin');
 // const shopRoutes = require('./routes/shop');
@@ -28,6 +28,7 @@ app.use((req, res, next) => {
 	// 		next();
 	// 	})
 	// 	.catch(err => console.log(err));
+	next();
 })
 
 app.use('/admin', adminRoutes);
@@ -37,6 +38,6 @@ app.use(errorController.get404);
 
 
 mongoConnect(() => {
-	console.log(client);
 	app.listen(3000);
+	console.log('Server start on 3000 port');
 })

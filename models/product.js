@@ -9,32 +9,11 @@ class Product {
   }
 
   save() {
-
+    const db = getDb();
+    return db.collection('products').insertOne(this).then().catch(err => console.log(err));
   }
 }
 
-const Product = sequelize.define('product', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true
-  },
-  title: {
-    type: Sequelize.STRING,
-  },
-  price: {
-    type: Sequelize.DOUBLE,
-    allowNull: false
-  },
-  imageUrl: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  description: {
-    type: Sequelize.TEXT,
-    allowNullL: false
-  }
-})
+
 
 module.exports = Product;

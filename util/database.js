@@ -5,7 +5,9 @@ let _db;
 
 const mongoConnect = (callback) => {
   MongoClient.connect(
-    `mongodb://${'localhost:27020'}/template`
+    `mongodb://${'localhost:27020'}/template`, {
+      useNewUrlParser: true
+    }
   ).then(client => {
     console.log('Connected');
     _db = client.db('test');
