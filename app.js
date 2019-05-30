@@ -4,7 +4,7 @@ const bosyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const errorController = require('./controllers/error');
-const User = require('./models/user')
+// const User = require('./models/user')
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -22,14 +22,14 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-	User.findById('5ceeb62d10a29f5a0f7fe76b')
-		.then(user => {
-			req.user = new User(user.username, user.email, user.cart, user._id);
-			next();
-		})
-		.catch(err => console.log(err));
-})
+// app.use((req, res, next) => {
+// 	User.findById('5ceeb62d10a29f5a0f7fe76b')
+// 		.then(user => {
+// 			req.user = new User(user.username, user.email, user.cart, user._id);
+// 			next();
+// 		})
+// 		.catch(err => console.log(err));
+// })
 
 app.use('/admin', adminRoutes);
 app.use('/', shopRoutes);
@@ -37,7 +37,7 @@ app.use('/', shopRoutes);
 app.use(errorController.get404);
 
 
-mongoose.connect(`mongodb://${'localhost:27017'}/template`, {
+mongoose.connect(`mongodb://${'localhost:27020'}/template`, {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(result => {
