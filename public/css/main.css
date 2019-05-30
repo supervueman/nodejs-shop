@@ -21,10 +21,14 @@ form {
 
 .centered {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+.image {
+  height: 20rem;
+}
+
+.image img {
+  height: 100%;
 }
 
 .main-header {
@@ -34,14 +38,6 @@ form {
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
-}
-
-.product-image {
-  width: 300px;
-}
-
-.product-image img {
-  width: 100%;
 }
 
 .main-header__nav {
@@ -206,6 +202,17 @@ form {
 .btn:hover,
 .btn:active {
   background-color: #00695c;
+  color: white;
+}
+
+.btn.danger {
+  color: red;
+  border-color: red;
+}
+
+.btn.danger:hover,
+.btn.danger:active {
+  background: red;
   color: white;
 }
 
